@@ -4,10 +4,11 @@ import com.example.CP1.Repository.EpisodioRepository;
 import com.example.CP1.controller.dto.EpisodioDTO;
 import com.example.CP1.model.Episodio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class EpisodioService {
 
     @Autowired

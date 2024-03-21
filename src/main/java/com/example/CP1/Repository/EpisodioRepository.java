@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface EpisodioRepository extends JpaRepository<Episodio, Long> {
 
-    List<Episodio> findAll();
-
 }
 
 

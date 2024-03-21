@@ -1,7 +1,6 @@
 package com.example.CP1.controller;
 
 import com.example.CP1.controller.dto.SerieDTO;
-import com.example.CP1.model.Filme;
 import com.example.CP1.model.Serie;
 import com.example.CP1.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,12 @@ import java.util.List;
 public class SerieController {
     @Autowired
     private SerieService serieService;
+
+    @GetMapping("/temporada/{temporada}")
+    public ResponseEntity<List<Serie>> pesquisarSeriesPorTemporada(@RequestParam Integer temporada) {
+        List<Serie> series = serieService.buscarSeriesPorTemporada(temporada);
+        return ResponseEntity.ok(series);
+    }
 
 
     // Adiciona um novo item ao estoque
@@ -85,6 +90,7 @@ public class SerieController {
             return ResponseEntity.notFound().build();
         }
     }
+
 
     // Remove uma serie pelo id
     @DeleteMapping("/{id}")

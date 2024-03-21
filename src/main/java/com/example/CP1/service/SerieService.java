@@ -1,14 +1,10 @@
 package com.example.CP1.service;
 
 import com.example.CP1.Repository.SerieRepository;
-import com.example.CP1.Repository.SerieRepository;
-import com.example.CP1.controller.dto.EpisodioDTO;
 import com.example.CP1.controller.dto.SerieDTO;
-import com.example.CP1.model.Filme;
 import com.example.CP1.model.Serie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -80,5 +76,9 @@ public class SerieService {
     public Serie encontrarSerieTitulo(String titulo) {
         Optional<Serie> filmeOptional = serieRepository.findByTitulo(titulo);
         return filmeOptional.orElse(null);
+    }
+
+    public List<Serie> buscarSeriesPorTemporada(Integer temporada) {
+        return serieRepository.findbyEpisodios_Temporada(temporada);
     }
 }
