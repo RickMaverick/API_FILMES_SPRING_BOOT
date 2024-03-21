@@ -5,26 +5,20 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
+import lombok.Data;
 import java.util.List;
 
+@Data
 public class SerieDTO {
-    @Id
-    @GeneratedValue
     private Long id;
 
-    @Column
     private String titulo;
 
-    @Column
     private String descricao;
 
-    @Column
     private Integer anoLancamento;
 
-    @Column
     private String genero;
 
-    @OneToMany
     private List<Episodio> episodios;
 }
