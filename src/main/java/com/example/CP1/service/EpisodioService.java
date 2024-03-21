@@ -50,6 +50,12 @@ public class EpisodioService {
         return episodioOptional.orElse(null);
     }
 
+    //Listar episodio por temporada
+
+    public List<Episodio> listarSeriesTemporada(Integer temporada){
+        return episodioRepository.findByTemporada(temporada);
+    }
+
 
     // Deletar episodio da lista
     public void removerEpisodio(Long id) {

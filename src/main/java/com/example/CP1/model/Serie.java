@@ -26,6 +26,7 @@ public class Serie {
     @Column
     private String genero;
 
-    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "serie_id")
     private List<Episodio> episodios;
 }

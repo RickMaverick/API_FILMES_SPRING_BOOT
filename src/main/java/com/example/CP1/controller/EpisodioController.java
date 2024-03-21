@@ -2,6 +2,7 @@ package com.example.CP1.controller;
 
 import com.example.CP1.controller.dto.EpisodioDTO;
 import com.example.CP1.model.Episodio;
+import com.example.CP1.model.Serie;
 import com.example.CP1.service.EpisodioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +32,19 @@ public class EpisodioController {
     }
 
     // Lista o episodio pelo id
-    @GetMapping("/{id}")
-    public ResponseEntity<Episodio> encontrarEpisodioId(@PathVariable Long id) {
+    @GetMapping("/temporada/{temporada}")
+    public ResponseEntity<List<Episodio>> listarSeriesTemporada(@PathVariable Integer temporada) {
+        List<Episodio> episodios = episodioService.listarSeriesTemporada(temporada);
+        if (!episodios.isEmpty()) {
+            return ResponseEntity.ok(episodios);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
+    // Lista o episodio pela temporada
+    @GetMapping("/{}")
+    public ResponseEntity<Episodio> encontrarEpisodioTemporada(@PathVariable Long id) {
         Episodio episodio = episodioService.encontrarEpisodioId(id);
         if (episodio != null) {
             return ResponseEntity.ok(episodio);
