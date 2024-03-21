@@ -5,19 +5,16 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import lombok.Data;
 
+@Data
 public class EpisodioDTO {
-    @Id
-    @GeneratedValue
     private Long id;
 
-    @Column
     private String titulo;
 
-    @Column
     private Integer numero;
 
-    @Column
     private Integer temporada;
 
     @ManyToOne

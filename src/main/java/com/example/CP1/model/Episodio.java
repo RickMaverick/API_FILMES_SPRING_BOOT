@@ -22,5 +22,6 @@ public class Episodio {
     private Integer temporada;
 
     @ManyToOne
+    @JoinColumn(name = "serie_id")
     private Serie serie;
 }
