@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static org.hibernate.sql.ast.SqlTreeCreationLogger.LOGGER;
+
 @Service
 public class SerieService {
 
@@ -77,8 +79,13 @@ public class SerieService {
         Optional<Serie> filmeOptional = serieRepository.findByTitulo(titulo);
         return filmeOptional.orElse(null);
     }
-
     public List<Serie> buscarSeriesPorTemporada(Integer temporada) {
-        return serieRepository.findbyEpisodios_Temporada(temporada);
+        LOGGER.info("Iniciando busca por séries na temporada " + temporada);
+        List<Serie> series = serieRepository.findByTemporada(temporada);
+        LOGGER.info("Consultando banco de dados. Séries encontradas: " + series.size());
+        return series;
+        //return serieRepository.findByTemporada(temporada);
     }
+
+
 }

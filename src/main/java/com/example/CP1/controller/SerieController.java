@@ -15,14 +15,7 @@ public class SerieController {
     @Autowired
     private SerieService serieService;
 
-    @GetMapping("/temporada/{temporada}")
-    public ResponseEntity<List<Serie>> pesquisarSeriesPorTemporada(@RequestParam Integer temporada) {
-        List<Serie> series = serieService.buscarSeriesPorTemporada(temporada);
-        return ResponseEntity.ok(series);
-    }
-
-
-    // Adiciona um novo item ao estoque
+    // Adiciona um novo item a lista de Séries
     @PostMapping
     public ResponseEntity<Serie> adicionarSerie(@RequestBody SerieDTO serie) {
         Serie novoSerie = serieService.adicionarSerie(serie);
@@ -88,6 +81,17 @@ public class SerieController {
             return ResponseEntity.ok(serie);
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    //Lista as séries pela temporada
+    @GetMapping("/temporada/{temporada}")
+    public ResponseEntity<List<Serie>> pesquisarSeriesPorTemporada(@PathVariable Integer temporada) {
+        List<Serie> series = serieService.buscarSeriesPorTemporada(temporada);
+        if (!series.isEmpty()) {
+            return ResponseEntity.ok(series);
+        } else {
+            return ResponseEntity.noContent().build();
         }
     }
 
