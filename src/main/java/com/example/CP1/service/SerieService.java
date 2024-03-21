@@ -80,12 +80,11 @@ public class SerieService {
         return filmeOptional.orElse(null);
     }
     public List<Serie> buscarSeriesPorTemporada(Integer temporada) {
-        LOGGER.info("Iniciando busca por séries na temporada " + temporada);
-        List<Serie> series = serieRepository.findByTemporada(temporada);
-        LOGGER.info("Consultando banco de dados. Séries encontradas: " + series.size());
-        return series;
-        //return serieRepository.findByTemporada(temporada);
+        return serieRepository.findByTemporada(temporada);
     }
+
+
+
 
 
 }
